@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>thingamalabs — handy little tools</title>
+<meta name="description" content="Free, open-source little tools that do one useful thing well. No accounts, no tracking.">
+<meta property="og:title" content="thingamalabs — handy little tools">
+<meta property="og:description" content="Free, open-source little tools that do one useful thing well.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+<style>
+:root{
+  --bg:#fff8ef;--card:#ffffff;--ink:#1f1a17;--mut:#6b5f57;--line:#eadfce;
+  --tomato:#ff5a36;--sun:#ffc23d;--mint:#2ec4a0;--sky:#4d8dff;--shadow:#1f1a17;
+  --font:ui-rounded,"SF Pro Rounded","Nunito","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#17130f;--card:#221c17;--ink:#f6eee4;--mut:#b3a596;--line:#3a3028;--shadow:#000;
+}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--font);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1040px;margin:auto;padding:0 20px}
+
+/* nav */
+nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;text-decoration:none;letter-spacing:-.02em}
+.logo b{color:var(--tomato)}
+nav .links{display:flex;gap:22px;font-weight:600;font-size:15px}
+nav .links a{text-decoration:none;color:var(--mut)}nav .links a:hover{color:var(--ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:48px 0 72px}
+h1{font-size:clamp(40px,6.4vw,72px);line-height:1.02;letter-spacing:-.035em;margin:0 0 20px;font-weight:850}
+h1 .squiggle{background:linear-gradient(transparent 62%,var(--sun) 62% 90%,transparent 90%);padding:0 4px}
+.lede{font-size:20px;color:var(--mut);max-width:30ch;margin:0 0 30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:14px;font-weight:700;text-decoration:none;
+  border:2.5px solid var(--ink);box-shadow:4px 4px 0 var(--shadow);transition:transform .12s,box-shadow .12s;background:var(--card)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--shadow)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--shadow)}
+.btn.primary{background:var(--tomato);color:#fff}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.gizmo{width:100%;max-width:420px;justify-self:center}
+.gizmo .spin{transform-origin:center;transform-box:fill-box;animation:spin 9s linear infinite}
+.gizmo .spin.rev{animation-direction:reverse;animation-duration:6s}
+.gizmo .bob{animation:bob 3s ease-in-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bob{50%{transform:translateY(-8px)}}
+@media (prefers-reduced-motion:reduce){.gizmo *{animation:none!important}}
+
+/* sections */
+section{padding:56px 0}
+h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.03em;margin:0 0 8px;font-weight:800}
+.sub{color:var(--mut);margin:0 0 32px}
+
+/* tools */
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.tool{background:var(--card);border:2.5px solid var(--ink);border-radius:22px;padding:26px;box-shadow:6px 6px 0 var(--shadow);display:flex;flex-direction:column;gap:12px}
+.tool .icon{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font-size:30px;border:2.5px solid var(--ink)}
+.tool h3{margin:0;font-size:24px;letter-spacing:-.02em}
+.tool p{margin:0;color:var(--mut)}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--bg);border:1.5px solid var(--line)}
+.tool .btns{margin-top:auto;padding-top:8px}
+.tool .btn{padding:9px 16px;font-size:15px;box-shadow:3px 3px 0 var(--shadow)}
+.tool.soon{border-style:dashed;box-shadow:none;background:transparent;align-items:flex-start;justify-content:center}
+.tool.soon .icon{border-style:dashed}
+
+/* promise */
+.promise{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.p{padding:22px;border-radius:18px;background:var(--card);border:2px solid var(--line)}
+.p strong{display:block;font-size:19px;margin-bottom:4px}
+.p span{color:var(--mut);font-size:16px}
+.p .e{font-size:28px;display:block;margin-bottom:8px}
+
+/* coffee */
+.coffee{background:var(--sun);color:#1f1a17;border:2.5px solid var(--ink);border-radius:28px;padding:44px;box-shadow:8px 8px 0 var(--shadow);
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.coffee h2{margin:0 0 6px}.coffee p{margin:0;max-width:44ch}
+.coffee .btn{background:#fff;color:#1f1a17;border-color:#1f1a17;box-shadow:4px 4px 0 #1f1a17}
+
+footer{padding:40px 0 56px;color:var(--mut);font-size:15px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;padding-top:16px;gap:16px}
+  .gizmo{max-width:260px;order:-1}
+  nav .links a.hide-sm{display:none}
+  .coffee{padding:28px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="/" aria-label="thingamalabs home">
+      <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="var(--sun)" stroke="var(--ink)" stroke-width="3"/><circle cx="20" cy="20" r="6" fill="var(--tomato)" stroke="var(--ink)" stroke-width="3"/></svg>
+      <span>thingama<b>labs</b></span>
+    </a>
+    <div class="links">
+      <a href="#tools">Tools</a>
+      <a href="#promise" class="hide-sm">Why</a>
+      <a href="https://github.com/thingamalabs">GitHub</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <h1>Handy little tools for <span class="squiggle">curious</span> people.</h1>
+      <p class="lede">Free, open-source thingamajigs that each do one useful thing really well. No accounts. No tracking. No nonsense.</p>
+      <div class="btns">
+        <a class="btn primary" href="#tools">See the tools →</a>
+        <a class="btn" href="https://ko-fi.com/thingamalabs">☕ Buy us a coffee</a>
+      </div>
+    </div>
+    <svg class="gizmo" viewBox="0 0 400 360" role="img" aria-label="A whimsical machine of gears and a lightbulb">
+      <g class="bob">
+        <!-- big gear -->
+        <g class="spin"><path fill="var(--sun)" stroke="var(--ink)" stroke-width="5" stroke-linejoin="round" d="M150 70l14 0 4 22a70 70 0 0 1 20 8l18-13 10 10-13 18a70 70 0 0 1 8 20l22 4 0 14-22 4a70 70 0 0 1-8 20l13 18-10 10-18-13a70 70 0 0 1-20 8l-4 22-14 0-4-22a70 70 0 0 1-20-8l-18 13-10-10 13-18a70 70 0 0 1-8-20l-22-4 0-14 22-4a70 70 0 0 1 8-20l-13-18 10-10 18 13a70 70 0 0 1 20-8z"/><circle cx="157" cy="161" r="24" fill="var(--bg)" stroke="var(--ink)" stroke-width="5"/></g>
+        <!-- small gear -->
+        <g class="spin rev"><path fill="var(--mint)" stroke="var(--ink)" stroke-width="5" stroke-linejoin="round" d="M268 170l12 0 3 15a42 42 0 0 1 12 6l13-8 8 8-8 13a42 42 0 0 1 6 12l15 3 0 12-15 3a42 42 0 0 1-6 12l8 13-8 8-13-8a42 42 0 0 1-12 6l-3 15-12 0-3-15a42 42 0 0 1-12-6l-13 8-8-8 8-13a42 42 0 0 1-6-12l-15-3 0-12 15-3a42 42 0 0 1 6-12l-8-13 8-8 13 8a42 42 0 0 1 12-6z"/><circle cx="274" cy="232" r="14" fill="var(--bg)" stroke="var(--ink)" stroke-width="5"/></g>
+        <!-- lightbulb -->
+        <g>
+          <line x1="300" y1="40" x2="300" y2="62" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>
+          <line x1="262" y1="54" x2="274" y2="72" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>
+          <line x1="338" y1="54" x2="326" y2="72" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>
+          <path d="M300 78a32 32 0 0 1 18 58v12h-36v-12a32 32 0 0 1 18-58z" fill="var(--tomato)" stroke="var(--ink)" stroke-width="5" stroke-linejoin="round"/>
+          <rect x="284" y="150" width="32" height="14" rx="4" fill="var(--sky)" stroke="var(--ink)" stroke-width="5"/>
+        </g>
+        <!-- wrench -->
+        <g transform="rotate(-35 90 290)"><rect x="40" y="282" width="110" height="18" rx="9" fill="var(--sky)" stroke="var(--ink)" stroke-width="5"/><path d="M150 291a22 22 0 1 0 0 1M150 280v22" fill="var(--sky)" stroke="var(--ink)" stroke-width="5"/></g>
+      </g>
+    </svg>
+  </header>
+
+  <section id="tools">
+    <h2>The workshop</h2>
+    <p class="sub">Everything here is free, open source, and runs on your own computer.</p>
+    <div class="tools">
+      <article class="tool">
+        <div class="icon" style="background:var(--sky)">📡</div>
+        <h3>DNS Benchmark</h3>
+        <p>Find the fastest DNS resolver from <em>your</em> network. Races Cloudflare, Google, Quad9, NextDNS and more over plain DNS, DNS-over-TLS and DNS-over-HTTPS.</p>
+        <div class="tags"><span class="tag">Mac</span><span class="tag">Windows</span><span class="tag">Linux</span><span class="tag">MIT</span></div>
+        <div class="btns">
+          <a class="btn primary" href="https://github.com/thingamalabs/dnsbench/releases/latest">Download</a>
+          <a class="btn" href="https://github.com/thingamalabs/dnsbench">Source</a>
+        </div>
+      </article>
+      <article class="tool soon">
+        <div class="icon">🧪</div>
+        <h3>More gizmos brewing…</h3>
+        <p>New tools are on the workbench. Watch the <a href="https://github.com/thingamalabs">GitHub</a> to hear about them first.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="promise">
+    <h2>The thingamalabs promise</h2>
+    <p class="sub">Small tools, made the way we wish all software was.</p>
+    <div class="promise">
+      <div class="p"><span class="e">🆓</span><strong>Free, forever</strong><span>No trials, no paywalls, no "pro" upsell.</span></div>
+      <div class="p"><span class="e">🔓</span><strong>Open source</strong><span>Read the code, change it, share it. MIT licensed.</span></div>
+      <div class="p"><span class="e">🙈</span><strong>No tracking</strong><span>No accounts, no analytics, no data leaving your machine.</span></div>
+      <div class="p"><span class="e">🎯</span><strong>Does one thing</strong><span>Each tool solves one problem well, then gets out of your way.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="coffee">
+      <div>
+        <h2>Fuelled by coffee ☕</h2>
+        <p>If a thingamalabs tool saved you some time or headache, a coffee keeps new gizmos coming.</p>
+      </div>
+      <a class="btn" href="https://ko-fi.com/thingamalabs">Buy us a coffee →</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 thingamalabs · made with curiosity</span>
+    <span><a href="https://github.com/thingamalabs">GitHub</a> · <a href="https://ko-fi.com/thingamalabs">Ko-fi</a></span>
+  </footer>
+</div>
+</body>
+</html>
